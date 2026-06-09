@@ -9,7 +9,7 @@ A five-page Power BI dashboard analyzing food access, food insecurity, poverty, 
 ---
 
 ## Project Overview
-![National Health Risk](screeenshots/Page 1 -National_health_risk.png)
+![National Health Risk]([Page 1 — National Health Risk & Geographic Prevalence.png]
 
 This project investigates whether physical food access independently predicts chronic disease outcomes across U.S. counties — after controlling for poverty, income, race, age, insurance status, unemployment, and urbanicity. A lot of public health research treats food access and poverty as interchangeable. This analysis separates them.
 
@@ -75,7 +75,7 @@ Food access survives every socioeconomic control in all three models. The beta c
 ---
 
 ## Dashboard Pages
-![National Health Risk](screenshots/page1_national_health_risk.png)
+![National Health Risk]([Page 1 — National Health Risk & Geographic Prevalence.png)
 
 ### Page 1 — National Health Risk & Geographic Prevalence
 *Where is the health burden worst and how does it differ between urban and rural America?*
@@ -85,7 +85,7 @@ Food access survives every socioeconomic control in all three models. The beta c
 - KPIs: Counties analyzed, selected disease prevalence, rural-urban health gap, highest burden state, most affected county
 
 ### Page 2 — Socioeconomic Drivers of Food Insecurity & Chronic Disease
-![Socioeconomic Drivers](screenshots/page2_socioeconomic_drivers.png)
+![Socioeconomic Drivers](page2_socioeconomic_drivers.png)
 
 *Does food insecurity predict disease — or is poverty doing all the work?*
 - County-level scatter: food insecurity vs. disease prevalence colored by poverty tier
@@ -94,7 +94,7 @@ Food access survives every socioeconomic control in all three models. The beta c
 - KPIs: High risk county percentage, Pearson correlation coefficient, national food insecurity rate, percentage of counties with compounding high insecurity and high disease burden
 
 ### Page 3 — Statistical Predictors of Chronic Disease Outcomes
-![Statistical Predictors](screenshots/page3_statistical_predictors.png)
+![Statistical Predictors](page3_statistical_predictors.png)
 
 *What actually drives chronic disease after controlling for everything?*
 - Regression coefficients diverging bar chart across all three models simultaneously
@@ -104,7 +104,7 @@ Food access survives every socioeconomic control in all three models. The beta c
 - KPIs: Top predictor, R², Adjusted R², number of significant variables
 
 ### Page 4 — County-Level Vulnerability & Performance Benchmarks
-![County Vulnerability](screenshots/page4_county_vulnerability.png)
+![County Vulnerability](page4_county_vulnerability.png)
 
 *Which counties face the highest combined structural risk and how does any county compare to the national benchmark?*
 - Top 10 counties ranked by composite structural risk index
@@ -113,7 +113,7 @@ Food access survives every socioeconomic control in all three models. The beta c
 - KPIs: Health risk rank among 3,129 counties, vulnerability classification, difference from national average, leading contributing factor
 
 ### Page 5 — Drivers of Food Access & Temporal Trends
-![Food Access Trends](screenshots/page5_food_access_trends.png)
+![Food Access Trends](page5_food_access_trends.png)
 
 *Where does physical food access break down and did COVID make it worse?*
 - Treemap: states facing the highest combined food access and income burden
