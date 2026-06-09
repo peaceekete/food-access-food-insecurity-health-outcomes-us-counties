@@ -9,7 +9,7 @@ A five-page Power BI dashboard analyzing food access, food insecurity, poverty, 
 ---
 
 ## Project Overview
-![National Health Risk]([page1_national_health_risk.png]
+![National Health Risk](page1_national_health_risk.png)
 
 This project investigates whether physical food access independently predicts chronic disease outcomes across U.S. counties — after controlling for poverty, income, race, age, insurance status, unemployment, and urbanicity. A lot of public health research treats food access and poverty as interchangeable. This analysis separates them.
 
@@ -75,7 +75,7 @@ Food access survives every socioeconomic control in all three models. The beta c
 ---
 
 ## Dashboard Pages
-![National Health Risk]([page1_national_health_risk.png])
+![National Health Risk](page1_national_health_risk.png)
 
 ### Page 1 — National Health Risk & Geographic Prevalence
 *Where is the health burden worst and how does it differ between urban and rural America?*
