@@ -1,209 +1,266 @@
-# food-access-food-insecurity-health-outcomes-us-counties
-A five-page Power BI dashboard analyzing food access, food insecurity, poverty, and chronic disease outcomes across 3,129 U.S. counties using SQL, regression modeling, and DAX.
+# Food Insecurity, Food Access, Chronic Disease & Community Health
+
+Power BI health and socioeconomic analytics project examining food insecurity, chronic disease prevalence, and the socioeconomic and demographic factors associated with health outcomes across 3,129 U.S. counties.
+
+# Project Overview
+
+Food insecurity and chronic disease are closely connected to the social and economic conditions of the communities where people live. This project analyzes county-level data to examine how food insecurity, food access, poverty, income, insurance coverage, unemployment, age, race and ethnicity, and urban or rural location relate to the prevalence of diabetes, heart disease, and obesity.
+
+The analysis covers 3,129 U.S. counties and combines statistical analysis with an interactive Power BI dashboard. The report allows users to compare disease prevalence across states and counties, examine differences from national averages, explore socioeconomic predictors, compare rural and urban communities, and identify counties with higher combined food and health challenges.
+
+The project also uses multiple linear regression models to examine the relationship between the selected socioeconomic, demographic, food access, and food insecurity variables and each of the three health outcomes.
+
+The Power BI report brings these analyses together across four pages, moving from national and geographic disease patterns to socioeconomic drivers, food access trends, and county-level comparisons.
+
+# Problem
+
+Food insecurity and chronic disease are often analyzed separately, which can make it difficult to understand how health outcomes vary across communities and which socioeconomic factors are associated with those differences.
+
+This project was developed to examine these relationships at the county level and answer questions such as:
+
+- How does chronic disease prevalence vary across U.S. states and counties?
+- Which states and counties have disease prevalence above or below the national average?
+- How does food insecurity relate to diabetes, heart disease, and obesity?
+- Which socioeconomic and demographic factors are most strongly associated with each health outcome?
+- How do food access and food insecurity differ between rural and urban communities?
+- How did food insecurity and grocery-store availability change between the periods before and after COVID-19?
+- Which counties have the highest combined food and health challenges?
+- Where does a selected county rank relative to other counties based on its health-risk measure?
+
+The goal was to bring these different perspectives together in one Power BI report so that the analysis could move from national and geographic patterns to potential socioeconomic drivers, and finally to county-level comparisons.
+
+# Project Objectives
+
+The objectives of this project were to:
+
+- Analyze diabetes, heart disease, and obesity prevalence across 3,129 U.S. counties.
+- Compare state and county disease prevalence with national averages.
+- Examine the relationship between food insecurity and chronic disease prevalence.
+- Identify socioeconomic, demographic, food access, and food insecurity variables associated with each health outcome.
+- Compare food insecurity and food access between rural and urban communities.
+- Examine food insecurity trends across the pre- and post-COVID periods.
+- Analyze grocery-store growth across rural and urban communities.
+- Identify counties experiencing higher levels of combined food and health challenges.
+- Build an interactive Power BI dashboard that allows users to explore these patterns by disease, state, and county.
+
+# Data and Analysis
+
+The analysis combines data from multiple sources to examine food insecurity, food access, chronic disease, and the social and economic characteristics of communities across 3,129 U.S. counties.
+
+The analysis uses descriptive statistics, geographic comparisons, correlation analysis, Key Influencers analysis, and multiple linear regression to examine patterns across the dataset.
+
+# Data Sources
+
+The project combines data from the following sources:
+
+- CDC PLACES - chronic disease prevalence
+- USDA Food Environment Atlas - food access, food insecurity, grocery stores, and related food-environment measures
+- County Health Rankings & Roadmaps - health and socioeconomic indicators
+- U.S. Census Bureau / American Community Survey (ACS) - demographic and socioeconomic characteristics
+- Small Area Health Insurance Estimates (SAHIE) - health insurance coverage
+- Food Access Research Atlas (FARA) - food access measures
+
+The datasets were cleaned and combined in SQL before being used in Power BI so that the analysis could be performed consistently across the 3,129 counties.
+
+# Regression Analysis
+
+Three multiple linear regression models were developed to examine the factors associated with diabetes, heart disease, and obesity prevalence across the 3,129 counties.
+
+Each model used the same 10 predictors:
+
+Low Food Access
+Median Household Income
+Poverty
+Uninsured Population
+Unemployment
+Population Age 65+
+Black Population
+Hispanic Population
+Urban/Rural Classification
+Food Insecurity
+
+The models produced the following results:
+
+| Health Outcome |    R² | Adjusted R² | Observations |
+| -------------- | ----: | ----------: | -----------: |
+| Diabetes       | 0.741 |       0.740 |        3,129 |
+| Heart Disease  | 0.782 |       0.782 |        3,129 |
+| Obesity        | 0.464 |       0.462 |        3,129 |
 
 
-# Food Access, Insecurity, Poverty & Health Outcomes Across U.S. Counties
+All three regression models were statistically significant overall.
 
-### A Five-Page Interactive Power BI Dashboard | 3,129 Counties | 9 Predictor Variables | 3 Regression Models
+# Diabetes
 
----
+The diabetes model explained approximately 74.1% of the variation in diabetes prevalence.
 
-## Project Overview
-![National Health Risk](page1_national_health_risk.png)
+Several predictors had statistically significant positive relationships with diabetes prevalence, including:
 
-This project investigates whether physical food access independently predicts chronic disease outcomes across U.S. counties — after controlling for poverty, income, race, age, insurance status, unemployment, and urbanicity. A lot of public health research treats food access and poverty as interchangeable. This analysis separates them.
+- Population Age 65+
+- Black Population
+- Food Insecurity
+- Low Food Access
+- Poverty
+- Hispanic Population
+- Uninsured Population
 
-The analysis integrates six public datasets across 3,129 U.S. counties, runs three multiple regression models in Excel, and visualizes the findings through a five-page interactive Power BI dashboard built entirely from scratch.
+Median household income and urban classification had statistically significant negative coefficients.
 
----
+Unemployment was not statistically significant at the 5% level.
 
-## Headline Finding
+# Heart Disease
 
-> Physical food access independently predicts diabetes, obesity, and coronary heart disease prevalence across 3,129 U.S. counties after controlling for poverty, income, race, age, insurance status, unemployment, and urbanicity. All three relationships are statistically significant at p < 0.001. Food access is not just a proxy for being poor — it contributes something on its own.
+The heart disease model had the highest explanatory power of the three models, with an R² of 0.782, meaning the model explained approximately 78.2% of the variation in heart disease prevalence.
 
----
+Population Age 65+ had the strongest positive coefficient among the predictors. Food insecurity, poverty, uninsured population, and low food access were also positively associated with heart disease prevalence.
 
-## Tools & Technologies
+Median household income, Black population, Hispanic population, and urban classification had negative coefficients.
 
-| Tool | Purpose |
-|------|---------|
-| MySQL 8.0 | Database construction, data cleaning, EDA across 3,129 county records |
-| Excel | Multiple regression modeling across three disease outcomes |
-| Power BI | Five-page interactive dashboard with slicers, drill-downs, and dynamic visuals |
-| DAX | Population-weighted averages, Pearson correlation, Z-score composite index, dynamic SWITCH routing, TOPN ranking |
+Unemployment was not statistically significant in this model.
 
----
+# Obesity
 
-## Dataset
+The obesity model explained approximately 46.4% of the variation in obesity prevalence, substantially lower than the diabetes and heart disease models.
 
-| Attribute | Detail |
-|-----------|--------|
-| File | master_county_final.csv |
-| Geographic Coverage | 3,129 U.S. counties (50 states) |
-| Predictor Variables | 9 socioeconomic and demographic variables |
-| Source Datasets | FARA, FEA, CDC PLACES, CHR, ACS, SAHIE |
-| Time Period | 2016–2023 |
+Low food access, poverty, Black population, and food insecurity had positive statistically significant coefficients.
 
-### Source Datasets
-- **FARA** — Food Access Research Atlas (USDA) — food access deprivation by county
-- **FEA** — Food Environment Atlas (USDA) - grocery store counts and growth rates
-- **CDC PLACES** — County-level chronic disease prevalence (diabetes, obesity, heart disease)
-- **CHR** — County Health Rankings — socioeconomic indicators
-- **ACS** — American Community Survey - demographics, income, population
-- **SAHIE** — Small Area Health Insurance Estimates — uninsurance rates
+Median household income, unemployment, population age 65+, and Hispanic population had negative statistically significant coefficients.
 
----
+Uninsured population and urban classification were not statistically significant in the obesity model.
 
-## Regression Models
+Comparing the Models
 
-| Model | R² | Adjusted R² | Significant Variables | Strongest Predictor |
-|-------|-----|-------------|----------------------|-------------------|
-| Diabetes | 0.708 | 0.707 | 8 of 9 | Poverty Rate (β = 0.168) |
-| Obesity | 0.463 | 0.461 | 7 of 9 | Senior Population % (β = −0.201) |
-| Heart Disease | 0.765 | 0.764 | 9 of 9 | Senior Population % (β = 0.159) |
+The results show that the same predictors do not have the same relationship with every health outcome.
 
-### Food Access Effect Across All Three Models
+Food insecurity was positively and statistically significantly associated with all three outcomes, although the size of the coefficient differed between the models.
 
-| Model | Beta | P-Value |
-|-------|------|---------|
-| Diabetes | 0.023 | < 0.001 |
-| Obesity | 0.042 | < 0.001 |
-| Heart Disease | 0.010 | < 0.001 |
+Population Age 65+ showed a particularly strong positive relationship with diabetes and heart disease, but its coefficient was negative in the obesity model.
 
-Food access survives every socioeconomic control in all three models. The beta coefficients are modesT poverty and age are stronger drivers — but the relationships are statistically significant across all outcomes.
+Median household income had a negative coefficient across all three models, while low food access had a positive coefficient across all three.
 
----
+The models also differed in explanatory power. Heart disease had the highest R² at 78.2%, followed by diabetes at 74.1%, while obesity had a lower R² of 46.4%.
 
-## Dashboard Pages
-![National Health Risk](page1_national_health_risk.png)
+The regression results identify statistical associations within the available county data. They are not interpreted as evidence that any individual factor directly causes a health outcome.
 
-### Page 1 — National Health Risk & Geographic Prevalence
-*Where is the health burden worst and how does it differ between urban and rural America?*
-- Choropleth map showing disease distribution across all 50 states
-- State deviation from national average diverging bar chart
-- Urban vs. rural health outcomes across all three diseases simultaneously
-- KPIs: Counties analyzed, selected disease prevalence, rural-urban health gap, highest burden state, most affected county
+# Dashboard Overview
 
-### Page 2 — Socioeconomic Drivers of Food Insecurity & Chronic Disease
-![Socioeconomic Drivers](page2_socioeconomic_drivers.png)
+# National Health & Geographic Patterns
+![National Health & Geographic Patterns](Geographic_prevalence.png)
 
-*Does food insecurity predict disease — or is poverty doing all the work?*
-- County-level scatter: food insecurity vs. disease prevalence colored by poverty tier
-- Urban vs. rural scatter: does the food insecurity-disease relationship hold across both community types?
-- State-level scatter: average poverty vs. average food insecurity colored by disease burden
-- KPIs: High risk county percentage, Pearson correlation coefficient, national food insecurity rate, percentage of counties with compounding high insecurity and high disease burden
 
-### Page 3 — Statistical Predictors of Chronic Disease Outcomes
-![Statistical Predictors](page3_statistical_predictors.png)
+The National Health & Geographic Patterns page provides an overview of chronic disease prevalence across the United States and examines how disease rates vary across states and counties.
 
-*What actually drives chronic disease after controlling for everything?*
-- Regression coefficients diverging bar chart across all three models simultaneously
-- Model fit comparison R² and Adjusted R² side by side
-- Predictor contribution stacked bar — relative weight of each variable per model
-- Regression summary table food access beta and p-value per model
-- KPIs: Top predictor, R², Adjusted R², number of significant variables
+A disease selector allows to switch between diabetes, heart disease, and obesity. The page also compares state and county disease prevalence with the corresponding national rate.
 
-### Page 4 — County-Level Vulnerability & Performance Benchmarks
-![County Vulnerability](page4_county_vulnerability.png)
+Questions answered include:
 
-*Which counties face the highest combined structural risk and how does any county compare to the national benchmark?*
-- Top 10 counties ranked by composite structural risk index
-- County vs. national benchmark chart disease rate, food access, food insecurity, and poverty indexed to 100
-- Social determinants scatter food insecurity vs. disease prevalence by urbanicity
-- KPIs: Health risk rank among 3,129 counties, vulnerability classification, difference from national average, leading contributing factor
+- How does the selected disease vary across the United States?
+- Which states have higher or lower disease prevalence?
+- How does a state's disease prevalence compare with the national rate?
+- Which counties have higher or lower disease prevalence?
+- How does the selected disease differ across geographic areas?
 
-### Page 5 — Drivers of Food Access & Temporal Trends
-![Food Access Trends](page5_food_access_trends.png)
+This page provides the starting point for understanding the geographic distribution of the three health outcomes before moving into the factors associated with those differences.
 
-*Where does physical food access break down and did COVID make it worse?*
-- Treemap: states facing the highest combined food access and income burden
-- Key Influencers visual: what drives population with low food access to increase
-- Pre vs. post-COVID food insecurity comparison by urban and rural communities
-- Grocery store growth 2016–2020 by urbanicity diverging bar chart
-- KPIs: Population with low food access, food insecurity before and after COVID, rise post-COVID
+# Socioeconomic Factors & Health Outcomes
+![Socioeconomic Factors & Health Outcomes](Socioeconomic_factors.png)
 
----
 
-## Key Findings
+The Socioeconomic Factors & Health Outcomes page examines the factors associated with differences in diabetes, heart disease, and obesity prevalence. It combines the regression analysis with Key Influencers analysis to show how socioeconomic, demographic, food access, and food insecurity variables relate to the selected health outcome.
 
-- Food access independently predicts all three chronic diseases after controlling for every major socioeconomic and demographic variable it is not just a poverty proxy
-- Poverty rate is the strongest single predictor of diabetes (β = 0.168) stronger than food access, race, or insurance status
-- Food insecurity correlates most strongly with diabetes (r = 0.48) the most directly food-sensitive disease because blood sugar regulation depends on nutritional consistency
-- 34% of U.S. counties simultaneously have above-median food insecurity and above-median disease rates these counties are not trending toward crisis, they are already in one
-- Rural counties have **23.27% higher heart disease rates** than urban counties the largest disparity across all three outcomes
-- Heart disease is 76.5% structurally explained social and economic conditions nearly fully determine where it concentrates geographically
-- Obesity is the outlier at 46.3% counties with larger senior populations and higher unemployment actually show lower obesity rates, pointing to behavioral and cultural factors that county-level data cannot capture
-- West Virginia sits **3.8 percentage points above the national average** the highest state deviation in the dataset, followed by Mississippi, Louisiana, Alabama, and Arkansas
-- Owsley County, Kentucky scores highest on the composite structural risk index (2.76) 39.5% poverty, 90% food access deprivation, 17% diabetes
-- Urban counties lost **8.34% of grocery stores between 2016 and 2020** before COVID arrived while rural counties grew at +77.64%. The food access crisis is structural, not pandemic-driven
-- Once poverty and income are fully controlled, the share of Black residents flips negative in the heart disease model racial health disparities in this dataset are driven by structural conditions, not biological difference
-- Vermont has 74% of residents beyond 1 mile from a grocery store yet maintains low disease rates — income, education, and healthcare access buffer physical food distance for wealthier populations in ways that low-income rural counties cannot replicate
+The regression section compares the direction, strength, and statistical significance of the predictors across the three health outcomes, while the Key Influencers analysis provides a closer look at the factors associated with the selected outcome.
 
----
+Questions answered include:
 
-## Insights
+- Which socioeconomic and demographic factors are most strongly associated with the selected health outcome?
+- Which factors have positive or negative relationships with the health outcome?
+- How do the important predictors differ between diabetes, heart disease, and obesity?
+- How does food insecurity relate to chronic disease prevalence after accounting for the other predictors?
+- Which factors are identified as important influences for the selected health outcome?
 
-This analysis examined food access, food insecurity, poverty, and chronic disease outcomes across 3,129 U.S. counties using six integrated datasets, three regression models, and nine predictor variables. The findings reveal that where Americans live and what structural conditions surround them largely determines how sick they get.
+This page connects the geographic patterns shown on the first page with the socioeconomic and demographic factors associated with differences in health outcomes.
 
-**Food access independently drives disease**
-Physical food access independently predicts diabetes, obesity, and heart disease after controlling for poverty, income, race, age, insurance, unemployment, and urbanicity. The effect survives every control variable. It is not a poverty proxy it does its own work.
+# Food Insecurity & Food Access
+![Food Insecurity & Food Access](Food_access_trends.png)
 
-**Food insecurity and disease are tightly linked**
-Food insecurity correlates most strongly with diabetes (r = 0.48) the most directly food-sensitive condition because blood sugar regulation depends on nutritional consistency. 34% of U.S. counties simultaneously have above-median food insecurity and above-median disease rates. These counties are not at risk of a crisis they are already in one.
 
-**Poverty is the single strongest driver of diabetes**
-Poverty rate has the highest beta coefficient in the diabetes model (β = 0.168), outweighing food access, race, age, and every other variable. Food access matters independently but poverty dominates. Addressing food access without addressing income deprivation will produce limited results.
 
-**The rural-urban gap is large, consistent, and disease-specific**
-Rural counties have 14.4% diabetes vs. 11.9% urban, 9.2% heart disease vs. 6.7% urban, and 38.4% obesity vs. 33.5% urban. The gap is widest for heart disease rural counties are 23.27% worse than urban. Obesity shows the smallest gap at 2.16%, meaning obesity is distributed more evenly across America while the downstream consequences of poor nutrition concentrate in rural communities.
+The Food Insecurity & Food Access page examines how food insecurity and access to food vary across communities and how these patterns differ between rural and urban areas.
 
-**Heart disease is almost entirely structurally explained**
-The heart disease model explains 76.5% of county-level variance. Social and economic conditions nearly fully explain where heart disease concentrates geographically. Diabetes sits at 70.8%. Obesity is the outlier at 46.3%, suggesting it is shaped by behavioral and cultural factors that county-level data cannot capture. Counties with larger senior populations actually show lower obesity rates, and counties with higher unemployment also show lower obesity both reversals that do not appear in the other models.
+The page also examines changes in food insecurity and grocery-store availability across different time periods, providing context for how the food environment has changed over time.
 
-**The Deep South and Appalachia carry the heaviest burden**
-West Virginia sits 3.8 percentage points above the national average the highest state deviation in the dataset. Mississippi, Louisiana, Alabama, and Arkansas follow. These states dominate every high-burden ranking across all three diseases simultaneously. Owsley County, Kentucky scores highest on the composite structural risk index at 2.76 with 39.5% poverty, 90% food access deprivation, and 17% diabetes — making it the most structurally vulnerable county in the nation.
+Key questions answered include:
 
-**Urban food infrastructure was already collapsing before COVID**
-Between 2016 and 2020 before any pandemic urban counties averaged −8.34% grocery store growth while rural counties grew at +77.64%. COVID landed on infrastructure that was already weakening. The population-weighted national rise of 0.05 percentage points obscures the real story unweighted across all communities equally, food insecurity rose 1.44 percentage points, meaning smaller and rural counties absorbed the majority of the deterioration.
+- How does food insecurity vary across states and counties?
+- How does food insecurity differ between rural and urban communities?
+- How does low food access vary across communities?
+- How has food insecurity changed across the different periods in the dataset?
+- How has grocery-store availability changed over time?
+- How does grocery-store growth differ between rural and urban communities?
+- Which areas experience higher levels of food access and food insecurity?
 
-**Structural conditions explain race, not biology**
-The share of Black residents in a county is positively associated with diabetes and obesity but flips negative in the heart disease model after full socioeconomic controls are applied. Once poverty and income are fully accounted for, the racial gap in heart disease reverses direction. This confirms that racial health disparities in this dataset are driven by structural conditions concentrated poverty, food insecurity, and limited access not biological difference.
+This page provides additional context for the relationship between the food environment and the health outcomes examined throughout the report.
 
-**Physical distance is not destiny**
-Vermont has 74% of its population living more than 1 mile from a grocery store yet records some of the lowest disease rates in the dataset. This does not invalidate the findings it reveals what income, education, and healthcare quality can do as protective factors. Higher-income populations compensate through car ownership, delivery access, and healthcare utilization. Low-income rural populations cannot. These counties point to the protective conditions worth replicating in high-risk regions.
+# County Health Risk Analysis
+![County Health Risk Analysis](County_vulnerability.png)
 
----
+The County Health Risk Analysis page brings the county-level analysis together and focuses on identifying counties with higher health risk based on the measures used in the report.
 
-## Recommendations
+The page provides county rankings, health-risk comparisons, and supporting indicators that help place an individual county in context relative to other counties.
 
-**1. Deploy mobile food programs and SNAP outreach as a coordinated package in double-burden counties**
-The 34% of counties with simultaneously high food insecurity and high disease rates need coordinated intervention now. Mobile grocery units, SNAP enrollment drives, and community health workers should be deployed together not as separate programs because each addresses a different layer of the same compounding problem. Deploying them in isolation allows the untreated layers to undermine whatever progress the others make.
+Questions answered include:
 
-**2. Expand SNAP eligibility and increase benefit levels in high-poverty counties**
-Poverty is the strongest predictor of diabetes in this dataset. SNAP expansion directly reduces poverty's grip on food access and nutrition quality. States with the highest poverty-disease overlap West Virginia, Mississippi, Louisiana, Alabama, and Arkansas should be prioritized for accelerated benefit expansion.
+- Where does a selected county rank among the 3,129 counties?
+- How does the county's health risk compare with other counties?
+- Is the county above or below the national health benchmark?
+- What is the county's leading contributing factor based on the selected risk measures?
+- What proportion of counties are above the national health average?
+- How does the county's selected disease prevalence compare with the national rate?
+- Which counties have the highest health-risk scores?
 
-**3. Introduce urban grocery retention incentives at the municipal level**
-Urban counties were losing stores before COVID arrived. City governments should introduce tax incentives, zoning protections, and below-market lease programs to retain grocery stores in low-income urban neighborhoods treating store retention as public health infrastructure rather than retail policy.
+The page brings the analysis down to the county level, making it possible to move from broader state and national patterns to the specific characteristics and relative position of individual counties.
 
-**4. Fund rural healthcare infrastructure alongside food access programs**
-The 23.27% rural-urban heart disease gap cannot be closed by food access improvements alone. Rural counties need co-investment in cardiovascular care, preventive screening, and telehealth infrastructure alongside any food access program. Treating them as separate policy areas will produce results that fall short of what the data suggests is possible.
+# Key Findings
 
-**5. Replace short-term disease metrics with intermediate outcome tracking**
-Chronic disease takes years to develop and years to reverse. Measuring a food access program's success by diabetes rate reduction after two years sets it up to appear ineffective even when it is working. Policymakers should track food insecurity rates, grocery utilization, and diet quality scores as primary metrics with disease outcomes measured over a 10-year horizon minimum.
+The analysis revealed several important findings across chronic disease prevalence, food insecurity, food access, socioeconomic conditions, and geographic differences across U.S. counties.
 
-**6. Commission targeted research into high-access, low-disease counties**
-Counties with poor physical food access but low disease rates are telling us something important about what else matters income levels, healthcare quality, food culture, and education. Understanding what specifically protects these communities could reveal transferable lessons for high-risk regions facing similar geographic barriers but far worse socioeconomic conditions.
+- Rural counties recorded higher chronic disease prevalence than urban counties across all three health outcomes. Diabetes prevalence was 14.4% in rural counties compared with 11.9% in urban counties, while heart disease prevalence was 9.2% compared with 6.7%. Obesity prevalence was 38.4% in rural counties compared with 33.5% in urban counties.
+- Heart disease showed the largest rural-urban difference, with a gap of approximately 23.27% between rural and urban counties.
+- West Virginia recorded the largest state-level deviation from the national disease prevalence benchmark, at approximately 3.8 percentage points above the national average in the previous geographic analysis.
+- Owsley County, Kentucky recorded the highest structural health-risk score in the previous county-level analysis, with a score of 2.76. The county also recorded 39.5% poverty, 90% food-access deprivation, and 17% diabetes prevalence, illustrating the concentration of multiple socioeconomic and health challenges within the same county.
+- Food insecurity and chronic disease frequently overlap at the county level. The earlier analysis found that approximately 34% of counties had both above-median food insecurity and above-median disease prevalence.
+- Food insecurity showed a positive relationship with diabetes prevalence, with the earlier correlation analysis reporting a correlation of approximately 0.47.
+- Food access differed substantially between rural and urban communities. Grocery-store growth from 2016 to 2020 was approximately -8.34% in urban counties compared with +77.64% in rural counties.
+- The regression models showed different levels of explanatory power across the three chronic diseases. The heart disease model had the highest R² at 0.782, followed by diabetes at 0.741, while obesity had an R² of 0.464. The adjusted R² values were 0.782, 0.740, and 0.462, respectively.
+- The diabetes model identified several statistically significant positive predictors. Population Age 65+ had a coefficient of 0.1460, Black population had a coefficient of 0.0661, food insecurity had a coefficient of 0.2664, poverty had a coefficient of 0.0941, low food access had a coefficient of 0.0193, and uninsured population had a coefficient of 0.0255. Hispanic population also had a positive coefficient of 0.0333.
+- Median household income had a negative coefficient of -0.0000185, while urban classification had a coefficient of -0.2821. Unemployment was not statistically significant at the 5% level.
+- The heart disease model showed the strongest overall fit. Population Age 65+ had the largest positive coefficient at 0.1592, followed by food insecurity at 0.1142, poverty at 0.0574, and uninsured population at 0.0337. Low food access had a positive coefficient of 0.0084. Median household income, Black population, Hispanic population, and urban classification had negative coefficients. Unemployment was not statistically significant.
+- The obesity model showed a different pattern from diabetes and heart disease. Food insecurity had a positive coefficient of 0.0954, low food access had a coefficient of 0.0409, poverty had a coefficient of 0.0501, and Black population had a coefficient of 0.0650. Median household income had a negative coefficient of -0.000125, while unemployment and Population Age 65+ also had negative coefficients. Uninsured population and urban classification were not statistically significant.
+- Food insecurity was statistically significant in all three regression models. Its coefficient was 0.2664 for diabetes, 0.0954 for obesity, and 0.1142 for heart disease, showing that its estimated relationship with disease prevalence differed considerably across the three outcomes.
+- Population Age 65+ was particularly important in the diabetes and heart disease models. Its coefficients were 0.1460 for diabetes and 0.1592 for heart disease, while the coefficient was -0.2006 in the obesity model. This difference demonstrates that the same predictor can have different relationships with different health outcomes.
+- Median household income had a statistically significant negative coefficient in all three models, with coefficients of -0.0000185 for diabetes, -0.0000171 for heart disease, and -0.000125 for obesity.
+- Low food access had a positive and statistically significant relationship across all three models, with coefficients of 0.0193 for diabetes, 0.0084 for heart disease, and 0.0409 for obesity.
+- The demographic relationships also differed between the diseases. The Black population percentage had positive coefficients for diabetes (0.0661) and obesity (0.0650) but a negative coefficient for heart disease (-0.0143). Hispanic population had positive coefficients for diabetes (0.0333) but negative coefficients for obesity (-0.0144) and heart disease (-0.0151).
+- The models were statistically significant overall, with an overall F-test significance of effectively 0 for diabetes, obesity, and heart disease.
+- The county-level analysis ranks individual counties among the 3,129 counties included in the dataset, allowing a county's relative health-risk position to be examined alongside its disease prevalence, food insecurity, food access, poverty, and other socioeconomic measures.
 
----
+Overall, the findings show substantial differences in chronic disease prevalence across U.S. counties and highlight the overlap between health outcomes, food insecurity, food access, socioeconomic conditions, and geography. The regression analysis further shows that these relationships vary by disease, with different predictors demonstrating different directions, strengths, and levels of statistical significance across diabetes, heart disease, and obesity.
 
-## Methodology Notes
+# Conclusion
 
-- All health prevalence figures are age-adjusted and sourced from CDC PLACES and County Health Rankings
-- Food access is measured using the USDA 1-mile urban threshold a physical proximity measure that does not capture transportation access, store quality, or affordability
-- Population-weighted averages are used throughout for all national and state-level KPIs to prevent small rural counties from distorting aggregate figures
-- The composite structural risk index combines Z-scores for disease prevalence, food insecurity, food access deprivation, and poverty rate into a single standardized index
-- Risk tier thresholds and quadrant classifications are analyst-defined based on data distribution quartiles and are not externally validated clinical benchmarks
-- All regression models were estimated in Excel using OLS with 9 predictors across 3,129 observations
-- 16 counties were removed during cleaning due to FARA geography mismatches, suppressed SAHIE estimates, and confirmed ACS data errors
+This project brings together chronic disease prevalence, food insecurity, food access, socioeconomic conditions, demographic characteristics, and geographic differences across 3,129 U.S. counties in one Power BI report.
 
----
+The analysis shows that health outcomes vary substantially across communities and that the relationship between socioeconomic and food-related factors differs across diabetes, heart disease, and obesity. The regression models provide additional evidence of these differences, while the geographic and county-level analysis shows how those patterns are distributed across the country.
+
+The dashboard brings these findings together through interactive geographic analysis, disease comparisons, food environment analysis, Key Influencers, regression results, and county-level health-risk analysis.
+
+Rather than treating chronic disease as a single measure, the project examines the three outcomes separately and considers the different socioeconomic, demographic, and food-related factors associated with each one.
+
+Thank you for taking the time to explore this project. Feedback and suggestions are always welcome.
+
+You can connect with me on LinkedIn or reach me via email.
+
+LinkedIn: https://linkedin.com/in/ekete-peace-a7837b275
+
+Email: peaceekete8e@gmail.com
+
